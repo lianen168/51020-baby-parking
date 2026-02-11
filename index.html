@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>51020.baby - 我依然爱你 · 守护永恒</title>
+    <style>
+        :root {
+            /* Palette: Rose Quartz & Serenity with a touch of deep commitment */
+            --primary-rose: #E06C75; 
+            --deep-love: #C0392B;
+            --soft-blue: #A9D0F5;
+            --bg-gradient: linear-gradient(180deg, #FFF0F5 0%, #FDFBF7 100%);
+            --text-color: #4A4A4A;
+            --card-bg: rgba(255, 255, 255, 0.95);
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'PingFang SC', 'Microsoft YaHei', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background: var(--bg-gradient);
+            color: var(--text-color);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* --- Header Section --- */
+        header {
+            text-align: center;
+            padding: 5rem 1rem 3rem;
+            position: relative;
+        }
+
+        .domain-title {
+            font-size: clamp(3rem, 9vw, 6.5rem);
+            font-weight: 900;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            cursor: default;
+        }
+
+        /* Effect 1: 51020 - Eternal Gradient Flow (Enduring Love) */
+        .num-part {
+            display: inline-block;
+            background: linear-gradient(120deg, #E06C75, #9B59B6, #E06C75);
+            background-size: 200% auto;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: flowLove 3s linear infinite;
+            filter: drop-shadow(0 4px 6px rgba(224, 108, 117, 0.3));
+        }
+
+        /* Effect 2: .baby - Gentle Rocking (Tenderness) */
+        .tld-part {
+            display: inline-block;
+            color: #7FABD8;
+            font-family: 'Comic Sans MS', 'Chalkboard SE', sans-serif;
+            animation: gentleRock 3s ease-in-out infinite;
+            transform-origin: center bottom;
+        }
+
+        @keyframes flowLove {
+            to { background-position: 200% center; }
+        }
+
+        @keyframes gentleRock {
+            0%, 100% { transform: rotate(-3deg); }
+            50% { transform: rotate(3deg); }
+        }
+
+        .subtitle {
+            font-size: 1.8rem;
+            color: var(--deep-love);
+            font-weight: 300;
+            letter-spacing: 2px;
+            margin-top: 10px;
+        }
+
+        .intro-text {
+            font-size: 1rem;
+            color: #777;
+            max-width: 600px;
+            margin: 1rem auto;
+            line-height: 1.6;
+        }
+
+        /* --- Canvas Visuals --- */
+        #canvas-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            background: radial-gradient(circle at center, #fff 0%, #fceef0 100%);
+            overflow: hidden;
+            margin-bottom: 3rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.5);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        .visual-text-overlay {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            font-size: 1.2rem;
+            color: rgba(192, 57, 43, 0.1);
+            font-weight: bold;
+            pointer-events: none;
+            z-index: 0;
+            white-space: nowrap;
+        }
+
+        canvas {
+            display: block;
+            position: relative;
+            z-index: 1;
+        }
+
+        /* --- 8 Fields Section --- */
+        .grid-section {
+            padding: 2rem 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2rem;
+            color: var(--text-color);
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(270px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid transparent;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(224, 108, 117, 0.15);
+            border-color: #fad0c4;
+        }
+
+        .emoji-icon {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            display: block;
+        }
+
+        .card h3 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--deep-love);
+        }
+
+        .card p {
+            font-size: 0.9rem;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* --- CTA Section --- */
+        .cta-area {
+            text-align: center;
+            padding: 6rem 1rem;
+            background: linear-gradient(0deg, #fff 0%, rgba(255,240,245,0.5) 100%);
+        }
+
+        .price-tag {
+            font-size: 3.5rem;
+            font-weight: 800;
+            color: var(--primary-rose);
+            margin-bottom: 1.5rem;
+        }
+
+        .price-tag small {
+            font-size: 1.5rem;
+            font-weight: 400;
+            color: #999;
+        }
+
+        .btn-buy {
+            display: inline-block;
+            background: linear-gradient(90deg, #ff758c 0%, #ff7eb3 100%);
+            color: white;
+            padding: 1.2rem 4rem;
+            font-size: 1.3rem;
+            border-radius: 50px;
+            text-decoration: none;
+            box-shadow: 0 10px 25px rgba(255, 117, 140, 0.4);
+            transition: all 0.3s ease;
+            font-weight: bold;
+        }
+
+        .btn-buy:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 35px rgba(255, 117, 140, 0.6);
+        }
+
+        /* --- Footer --- */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: #999;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+        }
+
+        .email-copy {
+            color: var(--primary-rose);
+            cursor: pointer;
+            border-bottom: 1px dashed var(--primary-rose);
+            font-weight: bold;
+        }
+
+        /* Toast */
+        #toast {
+            visibility: hidden;
+            min-width: 200px;
+            margin-left: -100px;
+            background-color: rgba(0,0,0,0.8);
+            color: #fff;
+            text-align: center;
+            border-radius: 4px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1;
+            left: 50%;
+            bottom: 30px;
+            font-size: 1rem;
+            opacity: 0;
+            transition: opacity 0.5s;
+        }
+
+        #toast.show {
+            visibility: visible;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="domain-title">
+            <span class="num-part">51020</span><span class="tld-part">.baby</span>
+        </div>
+        <div class="subtitle">我依然爱你</div>
+        <p class="intro-text">
+            在这个快节奏的时代，最动听的情话不是“我爱你”，而是历经时光考验后的<br>
+            “我依然爱你”。这是给爱人与家庭最坚定的数字承诺。
+        </p>
+    </header>
+
+    <!-- Visual Area: Flowing "I Still Love You" -->
+    <div id="canvas-container">
+        <canvas id="loveCanvas"></canvas>
+        <div class="visual-text-overlay">TIME FLOWS, LOVE REMAINS</div>
+    </div>
+
+    <section class="grid-section">
+        <div class="section-header">
+            <h2>✨ 8大领域：爱的多重表达 ✨</h2>
+        </div>
+        <div class="cards-grid">
+            <!-- 1. Anniversary Renewal -->
+            <div class="card">
+                <span class="emoji-icon">💞</span>
+                <h3>誓言重温 (Vow Renewal)</h3>
+                <p>结婚5年、10年、20年后，用 51020 (我依然爱你) 重温当年的誓言，制作最浪漫的纪念日网页。</p>
+            </div>
+            <!-- 2. Apology & Forgiveness -->
+            <div class="card">
+                <span class="emoji-icon">🕊️</span>
+                <h3>破镜重圆 (Reconciliation)</h3>
+                <p>无论发生了什么争吵，发送这个域名，就是最高级的道歉与挽回。“依然爱你”代表着包容与原谅。</p>
+            </div>
+            <!-- 3. Growth Companion -->
+            <div class="card">
+                <span class="emoji-icon">👶</span>
+                <h3>成长守护 (Growth)</h3>
+                <p>对孩子的爱是无条件的。无论他成败如何，父母永远可以说：宝贝(.baby)，我们依然爱你。</p>
+            </div>
+            <!-- 4. Long Distance -->
+            <div class="card">
+                <span class="emoji-icon">🌏</span>
+                <h3>异地相守 (Long Distance)</h3>
+                <p>跨越时区的恋爱利器。建立一个云端小屋，告诉对方：距离再远，我依然爱你。</p>
+            </div>
+            <!-- 5. Elderly Care Brand -->
+            <div class="card">
+                <span class="emoji-icon">👵</span>
+                <h3>银发关怀 (Elderly Care)</h3>
+                <p>适合做养老或家庭护理品牌。传递子女对父母、或社会对老人的永恒关爱与反哺。</p>
+            </div>
+            <!-- 6. Digital Time Capsule -->
+            <div class="card">
+                <span class="emoji-icon">⏳</span>
+                <h3>时光胶囊 (Time Capsule)</h3>
+                <p>封存今日的照片与视频，设定在未来开启。证明时间流逝，但爱意不减。</p>
+            </div>
+            <!-- 7. Web3 Family Trust -->
+            <div class="card">
+                <span class="emoji-icon">🔐</span>
+                <h3>家庭信托 (Family Trust)</h3>
+                <p>作为家族数字资产的入口，寓意家族精神的传承：无论世代更替，家族之爱永存。</p>
+            </div>
+            <!-- 8. Premium Gift -->
+            <div class="card">
+                <span class="emoji-icon">🎁</span>
+                <h3>终极礼物 (The Gift)</h3>
+                <p>比钻石更稀缺的数字资产。钻石代表恒久远，而 51020.baby 代表每天都在发生的鲜活爱意。</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-area">
+        <div class="price-tag">$100 <small>USD</small></div>
+        <!-- Spaceship Link - Opens in New Tab -->
+        <a href="https://www.spaceship.com/s/buy/51020.baby/G1dwWuz2CrKK9tDZ" target="_blank" class="btn-buy">
+            立即购买 · 锁定永恒
+        </a>
+        <p style="margin-top: 20px; color: #888;">
+            Spaceship 官方托管 · 安全秒转
+        </p>
+    </section>
+
+    <footer>
+        <p>联系卖家: <span class="email-copy" onclick="copyEmail()">joshua369x@gmail.com</span></p>
+        <p>© 2026 51020.baby | All Rights Reserved.</p>
+    </footer>
+
+    <div id="toast">邮箱已复制 (Email Copied)</div>
+
+    <script>
+        // --- Email Copy Function ---
+        function copyEmail() {
+            const email = "joshua369x@gmail.com";
+            navigator.clipboard.writeText(email).then(() => {
+                const toast = document.getElementById("toast");
+                toast.className = "show";
+                setTimeout(() => { toast.className = toast.className.replace("show", ""); }, 2500);
+            }).catch(err => {
+                console.error('Failed to copy: ', err);
+            });
+        }
+
+        // --- Canvas Animation: Flowing "I Still Love You" ---
+        const canvas = document.getElementById('loveCanvas');
+        const ctx = canvas.getContext('2d');
+
+        let width, height;
+        let particles = [];
+        
+        // Symbols: The numbers and the Chinese characters
+        const symbols = ['5', '1', '0', '2', '0', '我', '依', '然', '爱', '你', '❤'];
+
+        function resize() {
+            width = canvas.width = canvas.parentElement.offsetWidth;
+            height = canvas.height = canvas.parentElement.offsetHeight;
+        }
+        
+        window.addEventListener('resize', resize);
+        resize();
+
+        class Particle {
+            constructor() {
+                this.reset(true);
+            }
+
+            reset(initial = false) {
+                this.x = Math.random() * width;
+                // If initial, spread all over. If reset, start from bottom (rising love)
+                this.y = initial ? Math.random() * height : height + 20;
+                
+                this.speed = 0.5 + Math.random() * 1.5;
+                this.size = 12 + Math.random() * 16;
+                this.text = symbols[Math.floor(Math.random() * symbols.length)];
+                
+                // Color: shades of red/pink/grey
+                const rand = Math.random();
+                if (rand < 0.5) {
+                     this.color = `rgba(224, 108, 117, ${0.2 + Math.random()*0.5})`; // Rose
+                } else if (rand < 0.8) {
+                    this.color = `rgba(100, 100, 100, ${0.1 + Math.random()*0.3})`; // Grey (Time)
+                } else {
+                    this.color = `rgba(192, 57, 43, ${0.3 + Math.random()*0.5})`; // Deep Red
+                }
+
+                this.oscillationSpeed = (Math.random() * 0.02) + 0.01;
+                this.oscillationOffset = Math.random() * Math.PI * 2;
+            }
+
+            update() {
+                this.y -= this.speed;
+                // Gentle swaying motion
+                this.x += Math.sin(this.y * this.oscillationSpeed + this.oscillationOffset) * 0.5;
+
+                if (this.y < -30) {
+                    this.reset();
+                }
+            }
+
+            draw() {
+                ctx.font = `${this.size}px "Microsoft YaHei", sans-serif`;
+                ctx.fillStyle = this.color;
+                ctx.fillText(this.text, this.x, this.y);
+            }
+        }
+
+        // Init Particles
+        for (let i = 0; i < 100; i++) {
+            particles.push(new Particle());
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+            
+            // Draw particles
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+
+            requestAnimationFrame(animate);
+        }
+
+        animate();
+
+    </script>
+</body>
+</html>
